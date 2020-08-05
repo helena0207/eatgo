@@ -18,8 +18,8 @@ public class RestaurantTests {
     }
 
     @Test
-    public void infomation(){
-        Restaurant restaurnat=new Restaurant(1004L,"Bob zip","seoul");
-        assertThat(restaurnat.getInfomation(),is("Bob zip in seoul"));
+    public void information(){
+        Restaurant restaurant=new Restaurant(1004L,"Bob zip","seoul");
+        assertThat(restaurant.getInformation(),is("Bob zip in seoul"));
     }
 }

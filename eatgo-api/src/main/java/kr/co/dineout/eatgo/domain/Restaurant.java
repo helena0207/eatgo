@@ -23,7 +23,7 @@ public class Restaurant {
         return address;
     }
 
-    public String getInfomation() {
+    public String getInformation() {
         return name +" in "+ address;
     }
 

@@ -13,8 +13,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(RestaurnatController.class)
-public class RestaurnatControllerTest {
+@WebMvcTest(RestaurantController.class)
+public class RestaurantControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -24,11 +24,31 @@ public class RestaurnatControllerTest {
         mvc.perform(get("/restaurants"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(
-                        containsString("\"id\": 1004")
+                        containsString("\"id\":1004")
                 ))
                 .andExpect(content().string(
-                        containsString("\"name\": \"Bob zip\"")
+                        containsString("\"name\":\"Bob zip\"")
                 ));
+
     }
 
+    @Test
+    public void detail() throws Exception {
+        mvc.perform(get("/restaurants/1004"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(
+                        containsString("\"id\":1004")
+                ))
+                .andExpect(content().string(
+                        containsString("\"name\":\"Bob zip\"")
+                ));
+        mvc.perform(get("/restaurants/2020"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(
+                        containsString("\"id\":2020")
+                ))
+                .andExpect(content().string(
+                        containsString("\"name\":\"Cyber Food\"")
+                ));
+    }
 }
